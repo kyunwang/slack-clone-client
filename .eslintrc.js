@@ -9,7 +9,10 @@ module.exports = {
     quotes: ["error", "single"],
 	 "react/jsx-filename-extension": 0,
 	//  "indent": ["error", "tab"],
-	//  "no-tabs": 0
+	// Eslint going weird, so adding these rules
+	 "no-tabs": 0,
+	 "no-mixed-spaces-and-tabs": 0
+
   },
   globals: {
     document: 1
