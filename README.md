@@ -1,6 +1,6 @@
 # Slack-clone-client
 
-Learning along with a tutorial from benawad.
+Learning along with a tutorial from benawad while applying some changes.
 Link to the server [repo](#server-url)
 
 * Graphql
