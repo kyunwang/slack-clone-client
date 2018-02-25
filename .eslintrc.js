@@ -2,6 +2,9 @@ module.exports = {
   extends: "airbnb",
   plugins: ["react", "jsx-a11y", "import"],
   parser: "babel-eslint",
+  env: {
+	  browser: 1
+  },
   rules: {
     quotes: ["error", "single"],
 	 "react/jsx-filename-extension": 0,
