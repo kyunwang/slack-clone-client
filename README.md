@@ -20,8 +20,10 @@ Not everything is noted here by all means. Only the basic things are noted here 
 	- [Connecting](#)
 	<!-- - [](#) -->
 	<!-- - [](#) -->
-<!-- 1. [](#) -->
+<!-- 1. [MobX](#) -->
 
+## MobX
+[Docs: mobx](#mobx)
 
 ## Apollo
 Check the docs if you need specific information and help with your setup.
@@ -167,4 +169,5 @@ To mutate you pass the variables like so
 
 [server-url]: https://github.com/kyunwang/slack-clone-server
 
+[mobx]: https://mobx.js.org/
 [react-apollo]: https://www.apollographql.com/docs/react
