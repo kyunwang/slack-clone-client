@@ -19,7 +19,8 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "semantic-ui-css": "^2.2.12",
-    "semantic-ui-react": "^0.77.2"
+    "semantic-ui-react": "^0.77.2",
+    "styled-components": "^3.1.6"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,7 +28,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint src",
-    "push": "git checkout master && git merge develop && git push && git checkout develop"
+    "push": "git push && git checkout master && git merge develop && git push && git checkout develop"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",

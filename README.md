@@ -4,20 +4,22 @@ Learning along with a tutorial from benawad while applying some changes.
 Link to the server [repo](#server-url)
 
 * Graphql
-* Postgresql
 * Apollo (react-apollo)
 * Semantic-UI
+* Styled-components
 
 Notes will be written down here and some more stuff to return to for me. Mostly from the docs.
 
 Not everything is noted here by all means. Only the basic things are noted here of which I think is important. So don't forget to check the documentation of them too.
 
 *Using create-react-app*
+*Oh and no proptypes will be used this time*
 
 ## Table of content
 
 1. [Apollo](#)
 	- [Connecting](#)
+2. [Styled-Components](#)
 	<!-- - [](#) -->
 	<!-- - [](#) -->
 <!-- 1. [MobX](#) -->
