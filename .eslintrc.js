@@ -11,7 +11,8 @@ module.exports = {
 	//  "indent": ["error", "tab"],
 	// Eslint going weird, so adding these rules
 	 "no-tabs": 0,
-	 "no-mixed-spaces-and-tabs": 0
+	 "no-mixed-spaces-and-tabs": 0,
+	 "jsx-a11y/anchor-is-valid": 0
 
   },
   globals: {

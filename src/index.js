@@ -13,8 +13,8 @@ import Routes from './routes';
 import registerServiceWorker from './registerServiceWorker';
 
 const httpLink = createHttpLink({ uri: 'http://localhost:8084/graphql' });
-// const httpLink = new HttpLink({ uri: 'http://localhost:8084/graphql' });
 
+// Runs before any graphql request
 const middlewareLink = setContext(() => ({
   headers: {
 	  'x-token': localStorage.getItem('token'),
@@ -22,7 +22,9 @@ const middlewareLink = setContext(() => ({
   },
 }));
 
+// Runs after every graphql request
 const afterwareLink = new ApolloLink((operation, forward) => {
+  // Returns a object with headers in it
   const { headers } = operation.getContext();
 
   if (headers) {
@@ -38,16 +40,17 @@ const afterwareLink = new ApolloLink((operation, forward) => {
 	  }
   }
 
+  // Go to next step // Similar to next( from node)
   return forward(operation);
 });
 
+const link = afterwareLink.concat(middlewareLink.concat(httpLink));
 
 // Creating a new instance of ApolloClient
 const client = new ApolloClient({
   // Add a custom endpoint
   // Default is host/graphql
-//   link: authMiddleware.concat(concat(afterwareLink, httpLink)),
-  link: afterwareLink.concat(middlewareLink.concat(httpLink)),
+  link,
   // InMemoryCache is a normalized data store
   cache: new InMemoryCache(),
 });

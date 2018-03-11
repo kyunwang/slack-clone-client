@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import AppLayout from '../components/AppLayout';
 import Header from '../components/Header';
@@ -6,11 +7,15 @@ import Sidebar from '../containers/Sidebar';
 import Messages from '../components/Messages';
 import SendMessage from '../components/SendMessage';
 
-function ViewTeam(props) {
+const propTypes = {
+  match: PropTypes.object.isRequired,
+};
+
+function ViewTeam({ match: { params } }) {
   return (
     <AppLayout>
       <Header channelName="General" />
-      <Sidebar currentTeamId={4} />
+      <Sidebar currentTeamId={params.teamId} />
       <Messages>
         <ul className="message-list">
           <li />
@@ -21,5 +26,7 @@ function ViewTeam(props) {
     </AppLayout>
   );
 }
+
+ViewTeam.propTypes = propTypes;
 
 export default ViewTeam;

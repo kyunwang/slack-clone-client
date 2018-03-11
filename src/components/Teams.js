@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -38,20 +39,22 @@ const TeamItem = styled.li`
 	}
 `;
 
-const Team = ({ id, letter }) => (
-  <TeamItem key={`user-${id}`}>{letter}</TeamItem>
+const team = ({ id, letter }) => (
+  <Link key={`team-${id}`} to={`/view-team/${id}`} >
+    <TeamItem>{letter}</TeamItem>
+  </Link>
 );
 
-Team.propTypes = {
+team.propTypes = {
   id: PropTypes.number.isRequired,
-  number: PropTypes.string.isRequired,
+  letter: PropTypes.string.isRequired,
 };
 
 function Teams({ teams }) {
   return (
     <TeamsWrapper>
       <TeamList>
-        {teams.map(Team)}
+        {teams.map(team)}
       </TeamList>
     </TeamsWrapper>
   );

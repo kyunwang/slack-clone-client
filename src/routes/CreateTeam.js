@@ -40,10 +40,11 @@ onSubmit = async () => {
   // Reset errors
   this.errors = {};
 
-  const { ok, errors } = response.data.createTeam;
+  const { ok, errors, team } = response.data.createTeam;
 
   if (ok) {
-    console.log('ok');
+	 console.log('ok');
+	 this.props.history.push(`/view-team/${team.id}`);
   } else {
     const err = {};
 
@@ -103,6 +104,9 @@ const createTeamMutation = gql`
 	mutation($name: String!) {
 		createTeam(name: $name) {
 			ok
+			team {
+				id
+			}
 			errors {
 				path
 				message
