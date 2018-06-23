@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import gql from 'graphql-tag';
+import { compose, graphql } from 'react-apollo';
 
 import { Button, Input, Form, Modal } from 'semantic-ui-react';
 import { withFormik } from 'formik';
@@ -14,6 +16,7 @@ function AddChannelModal({
   handleBlur,
   handleSubmit,
   isSubmitting,
+  teamId,
 }) {
   return (
     <Modal open={open} onClose={onClose}>
@@ -44,13 +47,21 @@ function AddChannelModal({
   );
 }
 
-export default withFormik({
-  // Transform outer props into form values
-  mapPropsToValues: () => ({ name: '' }),
-  handleSubmit: (values, { props, setSubmitting }) => {
-    console.log('Submitting');
-    console.log(values);
+const createChannelMutation = gql`
+	mutation($teamId: Int!, $name: String!) {
+		createChannel(teamId: $teamId, name: $name)
+	}
+`;
 
-    setSubmitting(false);
-  },
-})(AddChannelModal);
+export default compose(
+  graphql(createChannelMutation),
+  withFormik({
+    // Transform outer props into form values
+    mapPropsToValues: () => ({ name: '' }),
+    handleSubmit: async (values, { props: { teamId, mutate, onClose }, setSubmitting }) => {
+      await mutate({ variables: { teamId, name: values.name } });
+      onClose();
+      setSubmitting(false);
+    },
+  }),
+)(AddChannelModal);
