@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-
 const ChannelsWrapper = styled.section`
 	grid-column: 2;
 	grid-row: 1 / 4;
@@ -12,7 +11,9 @@ const ChannelsWrapper = styled.section`
 
 const paddingLeft = 'padding-left: 10px';
 
-const PushLeft = styled.div`${paddingLeft}`;
+const PushLeft = styled.div`
+	${paddingLeft};
+`;
 
 const TeamNameHeader = styled.h1`
 	color: #fff;
@@ -25,7 +26,9 @@ const SideBarList = styled.ul`
 	padding-left: 0;
 `;
 
-const SideBarHeaderList = styled.li`${paddingLeft};`;
+const SideBarHeaderList = styled.li`
+	${paddingLeft};
+`;
 
 const SideBarListItem = styled.li`
 	${paddingLeft};
@@ -35,14 +38,15 @@ const SideBarListItem = styled.li`
 	}
 `;
 
-const Green = styled.span`color: #38973d;`;
+const Green = styled.span`
+	color: #38973d;
+`;
 
-const Bubble = ({ on = false }) => (on ? <Green>●</Green> : '○');
-Bubble.propTypes = { on: PropTypes.bool.isRequired };
+const Bubble = ({ on }) => (on ? <Green>●</Green> : '○');
+Bubble.propTypes = { on: PropTypes.bool };
+Bubble.defaultProps = { on: false };
 
-const Channel = ({ id, name }) => (
-  <SideBarListItem key={`channel-${id}`}># {name}</SideBarListItem>
-);
+const Channel = ({ id, name }) => <SideBarListItem key={`channel-${id}`}># {name}</SideBarListItem>;
 
 Channel.propTypes = {
   id: PropTypes.number.isRequired,
